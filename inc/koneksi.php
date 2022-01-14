@@ -1,4 +1,4 @@
 <?php
-$koneksi = new mysqli ("localhost","root","","mediatama_sistem_penduduk_agam");
+$koneksi = new mysqli ("localhost","root","","db_sidesa");
 ?>
 <!-- end -->

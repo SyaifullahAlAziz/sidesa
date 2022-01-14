@@ -1,6 +1,8 @@
 <?php
 include "../inc/koneksi.php";
 
+$tgl = date("d/m/y");
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +43,7 @@ include "../inc/koneksi.php";
 					<th>NO</th>
 					<th>NIK</th>
 					<th>NAMA</th>
-					<th>JEKEL</th>
+					<th>Jenis Kelamin</th>
 					<th>TANGGAL</th>
 					<th>PELAPOR</th>
 				</tr>
@@ -49,38 +51,57 @@ include "../inc/koneksi.php";
 			<tbody>
 				<?php
 
-            $no=1;
-            $sql_tampil = "SELECT d.id_datang, d.nik, d.nama_datang, d.jekel, d.tgl_datang, p.nama from 
+				$no = 1;
+				$sql_tampil = "SELECT d.id_datang, d.nik, d.nama_datang, d.jenis_kelamin, d.tgl_datang, p.nama from 
 			tb_datang d inner join tb_pdd p on d.pelapor=p.id_pend";
-            $query_tampil = mysqli_query($koneksi, $sql_tampil);
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
-				<tr>
-					<td>
-						<?php echo $no++; ?>
-					</td>
-					<td>
-						<?php echo $data['nik']; ?>
-					</td>
-					<td>
-						<?php echo $data['nama_datang']; ?>
-					</td>
-					<td>
-						<?php echo $data['jekel']; ?>
-					</td>
-					<td>
-						<?php echo $data['tgl_datang']; ?>
-					</td>
-					<td>
-						<?php echo $data['nama']; ?>
-					</td>
-				</tr>
+				$query_tampil = mysqli_query($koneksi, $sql_tampil);
+				while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+				?>
+					<tr>
+						<td>
+							<?php echo $no++; ?>
+						</td>
+						<td>
+							<?php echo $data['nik']; ?>
+						</td>
+						<td>
+							<?php echo $data['nama_datang']; ?>
+						</td>
+						<td>
+							<?php echo $data['jenis_kelamin']; ?>
+						</td>
+						<td>
+							<?php echo $data['tgl_datang']; ?>
+						</td>
+						<td>
+							<?php echo $data['nama']; ?>
+						</td>
+					</tr>
 				<?php
-            $no++;
-            }
-        ?>
+					$no++;
+				}
+				?>
 			</tbody>
 		</table>
+		<br><br>
+		<table class="table table-borderless">
+			<tr>
+				<td width="65%"></td>
+				<td class="text-center">
+					Situjuah Banda Dalam,
+					<?php echo $tgl; ?>
+					<br> KEPALA NAGARI SITUJUAH BANDA DALAM
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>(....................................................)
+				</td>
+			</tr>
+		</table>
+
 	</center>
 
 	<script>

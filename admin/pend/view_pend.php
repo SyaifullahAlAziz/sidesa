@@ -1,16 +1,17 @@
 <?php
 
-    if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * from tb_pdd where id_pend ='".$_GET['kode']."'";
-        $query_cek = mysqli_query($koneksi, $sql_cek);
-        $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
-    }
+if (isset($_GET['kode'])) {
+	$sql_cek = "SELECT * from tb_pdd where id_pend ='" . $_GET['kode'] . "'";
+	$query_cek = mysqli_query($koneksi, $sql_cek);
+	$data_cek = mysqli_fetch_array($query_cek, MYSQLI_BOTH);
+}
 ?>
 
 <div class="card card-success">
 	<div class="card-header">
 		<h3 class="card-title">
-			<i class="fa fa-user"></i> Detail Penduduk</h3>
+			<i class="fa fa-user"></i> Detail Penduduk
+		</h3>
 		</h3>
 		<div class="card-tools">
 		</div>
@@ -49,7 +50,7 @@
 						<b>Jenis Kelamin</b>
 					</td>
 					<td>:
-						<?php echo $data_cek['jekel']; ?>
+						<?php echo $data_cek['jenis_kelamin']; ?>
 					</td>
 				</tr>
 				<tr>

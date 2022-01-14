@@ -1,6 +1,8 @@
 <?php
 include "../inc/koneksi.php";
 
+$tgl = date("d/m/y");
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +44,7 @@ include "../inc/koneksi.php";
 					<th>NIK</th>
 					<th>NAMA</th>
 					<th>TTL</th>
-					<th>JEKEL</th>
+					<th>Jenis Kelamin</th>
 					<th>ALAMAT</th>
 					<th>AGAMA</th>
 					<th>NIKAH</th>
@@ -52,49 +54,74 @@ include "../inc/koneksi.php";
 			<tbody>
 				<?php
 
-            $no=1;
-            $sql_tampil = "select * from tb_pdd order by nama asc";
-            $query_tampil = mysqli_query($koneksi, $sql_tampil);
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
-				<tr>
-					<td align="center">
-						<?php echo $no; ?>
-					</td>
-					<td>
-						<?php echo $data['nik']; ?>
-					</td>
-					<td>
-						<?php echo $data['nama']; ?>
-					</td>
-					<td>
-						<?php echo $data['tempat_lh']; ?>/
-						<?php echo $data['tgl_lh']; ?>
-					</td>
-					<td align="center">
-						<?php echo $data['jekel']; ?>
-					</td>
-					<td>
-						<?php echo $data['desa']; ?>/ RT
-						<?php echo $data['rt']; ?>/ RW
-						<?php echo $data['rw']; ?>
-					</td>
-					<td>
-						<?php echo $data['agama']; ?>
-					</td>
-					<td>
-						<?php echo $data['kawin']; ?>
-					</td>
-					<td>
-						<?php echo $data['pekerjaan']; ?>
-					</td>
-				</tr>
+				$no = 1;
+				$sql_tampil = "select * from tb_pdd order by nama asc";
+				$query_tampil = mysqli_query($koneksi, $sql_tampil);
+				while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+				?>
+					<tr>
+						<td align="center">
+							<?php echo $no; ?>
+						</td>
+						<td>
+							<?php echo $data['nik']; ?>
+						</td>
+						<td>
+							<?php echo $data['nama']; ?>
+						</td>
+						<td>
+							<?php echo $data['tempat_lh']; ?>/
+							<?php echo $data['tgl_lh']; ?>
+						</td>
+						<td align="center">
+							<?php echo $data['jenis_kelamin']; ?>
+						</td>
+						<td>
+							<?php echo $data['desa']; ?>/ RT
+							<?php echo $data['rt']; ?>/ RW
+							<?php echo $data['rw']; ?>
+						</td>
+						<td>
+							<?php echo $data['agama']; ?>
+						</td>
+						<td>
+							<?php echo $data['kawin']; ?>
+						</td>
+						<td>
+							<?php echo $data['pekerjaan']; ?>
+						</td>
+
+					</tr>
+
+
+
+
 				<?php
-            $no++;
-            }
-        ?>
+					$no++;
+				}
+				?>
 			</tbody>
+
 		</table>
+		<br><br>
+		<table class="table table-borderless">
+			<tr>
+				<td width="65%"></td>
+				<td class="text-center">
+					Situjuah Banda Dalam,
+					<?php echo $tgl; ?>
+					<br> KEPALA NAGARI SITUJUAH BANDA DALAM
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>(....................................................)
+				</td>
+			</tr>
+		</table>
+
 	</center>
 
 	<script>

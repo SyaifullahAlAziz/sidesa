@@ -1,6 +1,8 @@
 <?php
 include "../inc/koneksi.php";
 
+$tgl = date("d/m/y");
+
 ?>
 
 <!DOCTYPE html>
@@ -41,37 +43,56 @@ include "../inc/koneksi.php";
 					<th>NO</th>
 					<th>NAMA</th>
 					<th>TANGGAL KELAHIRAN</th>
-					<th>JEKEL</th>
+					<th>Jenis Kelamin</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 
-            $no=1;
-            $sql_tampil = "select * from tb_lahir order by nama asc";
-            $query_tampil = mysqli_query($koneksi, $sql_tampil);
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
-				<tr>
-					<td align="center">
-						<?php echo $no; ?>
-					</td>
-					<td>
-						<?php echo $data['nama']; ?>
-					</td>
-					<td>
-						<?php echo $data['tgl_lh']; ?>
-					</td>
-					<td>
-						<?php echo $data['jekel']; ?>
-					</td>
-				</tr>
+				$no = 1;
+				$sql_tampil = "select * from tb_lahir order by nama asc";
+				$query_tampil = mysqli_query($koneksi, $sql_tampil);
+				while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+				?>
+					<tr>
+						<td align="center">
+							<?php echo $no; ?>
+						</td>
+						<td>
+							<?php echo $data['nama']; ?>
+						</td>
+						<td>
+							<?php echo $data['tgl_lh']; ?>
+						</td>
+						<td>
+							<?php echo $data['jenis_kelamin']; ?>
+						</td>
+					</tr>
 				<?php
-            $no++;
-            }
-        ?>
+					$no++;
+				}
+				?>
 			</tbody>
 		</table>
+		<br><br>
+		<table class="table table-borderless">
+			<tr>
+				<td width="65%"></td>
+				<td class="text-center">
+					Situjuah Banda Dalam,
+					<?php echo $tgl; ?>
+					<br> KEPALA NAGARI SITUJUAH BANDA DALAM
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>(....................................................)
+				</td>
+			</tr>
+		</table>
+
 	</center>
 
 	<script>

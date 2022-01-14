@@ -1,7 +1,8 @@
 <div class="card card-primary">
 	<div class="card-header">
 		<h3 class="card-title">
-			<i class="fa fa-edit"></i> Tambah Data</h3>
+			<i class="fa fa-edit"></i> Tambah Data
+		</h3>
 	</div>
 	<form action="" method="post" enctype="multipart/form-data">
 		<div class="card-body">
@@ -31,12 +32,12 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Jenis Kelain</label>
+				<label class="col-sm-2 col-form-label">Jenis Kelamin</label>
 				<div class="col-sm-3">
-					<select name="jekel" id="jekel" class="form-control">
+					<select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
 						<option>- Pilih -</option>
-						<option>LK</option>
-						<option>PR</option>
+						<option>Laki-Laki</option>
+						<option>Perempuan</option>
 					</select>
 				</div>
 			</div>
@@ -102,44 +103,44 @@
 </div>
 
 <?php
-    if (isset ($_POST['Simpan'])){
+if (isset($_POST['Simpan'])) {
 
 	$acak = mt_rand(1000, 9999);
 
 	$sumber = $_FILES["ktp"]["tmp_name"];
 	$target_dir = "file_ktp";
-	$temp = explode(".",$_FILES["ktp"]["name"]);
-	$nama_baru = ("ktp-".$acak).'.'.end($temp);
+	$temp = explode(".", $_FILES["ktp"]["name"]);
+	$nama_baru = ("ktp-" . $acak) . '.' . end($temp);
 
-	if(move_uploaded_file($_FILES["ktp"]["tmp_name"], $target_dir."/".$nama_baru)){
+	if (move_uploaded_file($_FILES["ktp"]["tmp_name"], $target_dir . "/" . $nama_baru)) {
 
-    	//mulai proses simpan data
-        $sql_simpan = "INSERT INTO tb_pdd (ktp, nik, nama, tempat_lh, tgl_lh, jekel, desa, rt, rw, agama, kawin, pekerjaan, status) VALUES (
-            '".$nama_baru."',
-			'".$_POST['nik']."',
-            '".$_POST['nama']."',
-			'".$_POST['tempat_lh']."',
-			'".$_POST['tgl_lh']."',
-            '".$_POST['jekel']."',
-            '".$_POST['desa']."',
-			'".$_POST['rt']."',
-			'".$_POST['rw']."',
-			'".$_POST['agama']."',
-			'".$_POST['kawin']."',
-			'".$_POST['pekerjaan']."',
+		//mulai proses simpan data
+		$sql_simpan = "INSERT INTO tb_pdd (ktp, nik, nama, tempat_lh, tgl_lh, jenis_kelamin, desa, rt, rw, agama, kawin, pekerjaan, status) VALUES (
+            '" . $nama_baru . "',
+			'" . $_POST['nik'] . "',
+            '" . $_POST['nama'] . "',
+			'" . $_POST['tempat_lh'] . "',
+			'" . $_POST['tgl_lh'] . "',
+            '" . $_POST['jenis_kelamin'] . "',
+            '" . $_POST['desa'] . "',
+			'" . $_POST['rt'] . "',
+			'" . $_POST['rw'] . "',
+			'" . $_POST['agama'] . "',
+			'" . $_POST['kawin'] . "',
+			'" . $_POST['pekerjaan'] . "',
             'Ada')";
-        $query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
+		$query_simpan = mysqli_query($koneksi, $sql_simpan);
+		mysqli_close($koneksi);
 
-    if ($query_simpan) {
-      echo "<script>
+		if ($query_simpan) {
+			echo "<script>
 		Swal.fire({title: 'Tambah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
 		}).then((result) => {if (result.value){
 			window.location = 'index.php?page=data-pend';
 			}
 		})</script>";
-		}else{
-		echo "<script>
+		} else {
+			echo "<script>
 		Swal.fire({title: 'Tambah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
 		}).then((result) => {if (result.value){
 			window.location = 'index.php?page=add-pend';

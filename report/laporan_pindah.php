@@ -1,6 +1,8 @@
 <?php
 include "../inc/koneksi.php";
 
+$tgl = date("d/m/y");
+
 ?>
 
 <!DOCTYPE html>
@@ -48,35 +50,54 @@ include "../inc/koneksi.php";
 			<tbody>
 				<?php
 
-            $no=1;
-            $sql_tampil = "SELECT p.id_pend, p.nik, p.nama, d.tgl_pindah, d.alasan, d.id_pindah from 
+				$no = 1;
+				$sql_tampil = "SELECT p.id_pend, p.nik, p.nama, d.tgl_pindah, d.alasan, d.id_pindah from 
 			tb_pindah d inner join tb_pdd p on p.id_pend=d.id_pdd";
-            $query_tampil = mysqli_query($koneksi, $sql_tampil);
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
-				<tr>
-					<td>
-						<?php echo $no++; ?>
-					</td>
-					<td>
-						<?php echo $data['nik']; ?>
-					</td>
-					<td>
-						<?php echo $data['nama']; ?>
-					</td>
-					<td>
-						<?php echo $data['tgl_pindah']; ?>
-					</td>
-					<td>
-						<?php echo $data['alasan']; ?>
-					</td>
-				</tr>
+				$query_tampil = mysqli_query($koneksi, $sql_tampil);
+				while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+				?>
+					<tr>
+						<td>
+							<?php echo $no++; ?>
+						</td>
+						<td>
+							<?php echo $data['nik']; ?>
+						</td>
+						<td>
+							<?php echo $data['nama']; ?>
+						</td>
+						<td>
+							<?php echo $data['tgl_pindah']; ?>
+						</td>
+						<td>
+							<?php echo $data['alasan']; ?>
+						</td>
+					</tr>
 				<?php
-            $no++;
-            }
-        ?>
+					$no++;
+				}
+				?>
 			</tbody>
 		</table>
+		<br><br>
+		<table class="table table-borderless">
+			<tr>
+				<td width="65%"></td>
+				<td class="text-center">
+					Situjuah Banda Dalam,
+					<?php echo $tgl; ?>
+					<br> KEPALA NAGARI SITUJUAH BANDA DALAM
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>(....................................................)
+				</td>
+			</tr>
+		</table>
+
 	</center>
 
 	<script>

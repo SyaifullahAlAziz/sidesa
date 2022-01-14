@@ -1,6 +1,8 @@
 <?php
 include "../inc/koneksi.php";
 
+$tgl = date("d/m/y");
+
 ?>
 
 <!DOCTYPE html>
@@ -52,46 +54,65 @@ include "../inc/koneksi.php";
 			<tbody>
 				<?php
 
-            $no=1;
-            $sql_tampil = "select * from tb_kk order by kepala asc";
-            $query_tampil = mysqli_query($koneksi, $sql_tampil);
-            while ($data = mysqli_fetch_array($query_tampil,MYSQLI_BOTH)) {
-        ?>
-				<tr>
-					<td align="center">
-						<?php echo $no; ?>
-					</td>
-					<td>
-						<?php echo $data['no_kk']; ?>
-					</td>
-					<td>
-						<?php echo $data['kepala']; ?>
-					</td>
-					<td>
-						<?php echo $data['desa']; ?>
-					</td>
-					<td>
-						<?php echo $data['rt']; ?>
-					</td>
-					<td>
-						<?php echo $data['rw']; ?>
-					</td>
-					<td>
-						<?php echo $data['kec']; ?>
-					</td>
-					<td>
-						<?php echo $data['kab']; ?>
-					</td>
-					<td>
-						<?php echo $data['prov']; ?>
-					</td>
-				</tr>
+				$no = 1;
+				$sql_tampil = "select * from tb_kk order by kepala asc";
+				$query_tampil = mysqli_query($koneksi, $sql_tampil);
+				while ($data = mysqli_fetch_array($query_tampil, MYSQLI_BOTH)) {
+				?>
+					<tr>
+						<td align="center">
+							<?php echo $no; ?>
+						</td>
+						<td>
+							<?php echo $data['no_kk']; ?>
+						</td>
+						<td>
+							<?php echo $data['kepala']; ?>
+						</td>
+						<td>
+							<?php echo $data['desa']; ?>
+						</td>
+						<td>
+							<?php echo $data['rt']; ?>
+						</td>
+						<td>
+							<?php echo $data['rw']; ?>
+						</td>
+						<td>
+							<?php echo $data['kec']; ?>
+						</td>
+						<td>
+							<?php echo $data['kab']; ?>
+						</td>
+						<td>
+							<?php echo $data['prov']; ?>
+						</td>
+					</tr>
 				<?php
-            $no++;
-            }
-        ?>
+					$no++;
+				}
+				?>
 			</tbody>
 		</table>
+		<br><br>
+		<table class="table table-borderless">
+			<tr>
+				<td width="65%"></td>
+				<td class="text-center">
+					Situjuah Banda Dalam,
+					<?php echo $tgl; ?>
+					<br> KEPALA NAGARI SITUJUAH BANDA DALAM
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>(....................................................)
+				</td>
+			</tr>
+		</table>
+
 	</center>
 
 	<script>
